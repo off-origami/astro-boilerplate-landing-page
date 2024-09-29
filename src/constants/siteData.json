@@ -1,0 +1,28 @@
+{
+  "default": {
+    "name": "",
+    "title": "",
+    "description": "",
+    "openGraph": {
+      "title": "",
+      "description": "",
+      "type": "website",
+      "url": "",
+      "image": ""
+    },
+    "twitter": {
+      "title": "",
+      "description": "",
+      "creator": ""
+    }
+  },
+  "pages": {
+    "about": {
+      "title": "",
+      "description": ""
+    },
+    "contact": {
+      "title": ""
+    }
+  }
+}
