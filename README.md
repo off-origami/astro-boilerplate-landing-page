@@ -90,7 +90,7 @@ import { SEO } from "astro-seo";
 ```
 
 Example configuration:
-```json
+```astro
 <SEO
     title="Descriptive Title."
     description="Optimized description full of well-researched keywords."
