@@ -1,12 +1,5 @@
 ---
-import { SEO, type Props as SEOProps } from "astro-seo";
-import SiteData from "../constants/siteData.json";
-
-interface Props {
-  seo?: SEOProps;
-}
-
-const { seo } = Astro.props;
+import { SEO } from "astro-seo";
 ---
 
 <!doctype html>
@@ -19,27 +12,31 @@ const { seo } = Astro.props;
     <link rel="sitemap" href="/sitemap-index.xml" />
     <meta name="generator" content={Astro.generator} />
     <SEO
-      {...seo}
-      title={seo?.title ?? SiteData.default.title}
-      description={seo?.description ?? SiteData.default.description}
-      openGraph={seo?.openGraph ?? {
-        basic: {
-          image: SiteData.default.openGraph.image,
-          title: SiteData.default.openGraph.title,
-          type: SiteData.default.openGraph.type,
-          url: SiteData.default.openGraph.url
-        },
-        optional: {
-          description: SiteData.default.openGraph.description,
-          siteName: SiteData.default.openGraph.title
-        }
-      }}
-      twitter={seo?.twitter ?? {
-        title: SiteData.default.twitter.title,
-        description: SiteData.default.twitter.description,
-        creator: SiteData.default.twitter.creator
-      }}
-    />
+    title="Descriptive Title."
+    description="Optimized description full of well-researched keywords."
+    openGraph={{
+      basic: {
+        title: "Descriptive Title.",
+        type: "A type.", // check https://ogp.me/#types
+        url: "",
+        image: ""
+      },
+      optional: {
+        description:
+          "Optimized description full of well-researched keywords."
+      }
+    }}
+    twitter={{
+      card: "summary_large_image", // Must be one of “summary”, “summary_large_image”, “app”, or “player”.
+      title: "Descriptive Title.",
+      description:
+        "Optimized description full of well-researched keywords.",
+      creator: "@...",
+      site: "@...",
+      image: "",
+      imageAlt: ""
+    }}
+  />
   </head>
   <body>
     <slot />
