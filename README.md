@@ -13,8 +13,7 @@ The following structure outlines the key directories and files in this Astro pro
 ├── src/                
 │   ├── components/      # UI components
 │   ├── constants/       # Configuration and constants (i18n, site data)
-│   │   ├── i18nConfig.ts
-│   │   └── siteData.json
+│   │   └── i18nConfig.ts
 │   ├── layouts/         # Layout components (global layout, etc.)
 │   │   └── Layout.astro
 │   └── pages/           # Page components, where routes are defined
@@ -81,38 +80,43 @@ export default defineConfig({
 ```
 
 ### SEO Optimization
-This template includes SEO support via the astro-seo package. You can manage meta tags, OpenGraph, and more settings through /src/constants/siteData.json.
+This template includes SEO support via the [astro-seo](https://github.com/jonasmerlin/astro-seo) package. You can manage meta tags, OpenGraph, and more settings through /src/layouts/Layout.astro.
+
+The SEO metadata is used in /src/pages/Layout.astro:
+```astro
+---
+import { SEO } from "astro-seo";
+---
+```
 
 Example configuration:
 ```json
-{
-  "default": {
-    "title": "My Site",
-    "description": "Description of my site",
-    "openGraph": {
-      "title": "My Site",
-      "description": "Description of my site",
-      "type": "website",
-      "url": "https://example.com",
-      "image": "/og-image.png"
-    },
-    "twitter": {
-      "title": "My Site",
-      "description": "Description of my site",
-      "creator": "@username"
-    }
-  }
-}
-```
-
-The SEO metadata is used in /src/layouts/Layout.astro:
-```astro
 <SEO
-  title={seo?.title ?? SiteData.default.title}
-  description={seo?.description ?? SiteData.default.description}
-  openGraph={seo?.openGraph ?? SiteData.default.openGraph}
-  twitter={seo?.twitter ?? SiteData.default.twitter}
-/>
+    title="Descriptive Title."
+    description="Optimized description full of well-researched keywords."
+    openGraph={{
+      basic: {
+        title: "Descriptive Title.",
+        type: "A type.", // check https://ogp.me/#types
+        url: "",
+        image: ""
+      },
+      optional: {
+        description:
+          "Optimized description full of well-researched keywords."
+      }
+    }}
+    twitter={{
+      card: "summary_large_image", // Must be one of “summary”, “summary_large_image”, “app”, or “player”.
+      title: "Descriptive Title.",
+      description:
+        "Optimized description full of well-researched keywords.",
+      creator: "@...",
+      site: "@...",
+      image: "",
+      imageAlt: ""
+    }}
+  />
 ```
 
 ### Tailwind CSS
