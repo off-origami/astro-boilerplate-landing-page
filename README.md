@@ -38,6 +38,29 @@ The following structure outlines the key directories and files in this Astro pro
 
 ## 🚀 Features
 
+### Sitemap Generation
+Automatically generate a sitemap during the build process of your project using the [Astro Sitemap](https://github.com/withastro/astro/tree/main/packages/integrations/sitemap/) integration.
+astro.config.mjs:
+```mjs
+
+...
+
+// https://astro.build/config
+export default defineConfig({
+  // Define the base site URL for the generated sitemap
+  site: "https://example.com",
+
+  ...
+
+  integrations: [
+    tailwind(),
+    sitemap({
+      i18n: i18nConfig // Pass the i18n configuration to the sitemap integration
+    })
+  ]
+});
+```
+
 ### Internationalization (i18n)
 
 This project has i18n (Internationalization) support built-in, allowing you to create multiple language versions of your site.
@@ -72,10 +95,11 @@ export default defineConfig({
     locales: Object.keys(i18nConfig.locales),
   },
   integrations: [
+    tailwind(),
     sitemap({
-      i18n: i18nConfig,
-    }),
-  ],
+      i18n: i18nConfig // Pass the i18n configuration to the sitemap integration
+    })
+  ]
 });
 ```
 
@@ -121,9 +145,6 @@ Example configuration:
 
 ### Tailwind CSS
 Tailwind CSS is pre-configured to streamline styling. You can customize it via the ```tailwind.config.mjs``` file.
-
-### Sitemap Generation
-Automatically generate a sitemap for your project using the Astro Sitemap integration.
 
 ### Code Quality Tools
 - ESLint: For linting and enforcing best practices in your code.
